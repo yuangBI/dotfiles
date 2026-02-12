@@ -42,6 +42,7 @@ output HDMI-A-1 mode 1920x1080@120Hz
           timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
           before-sleep 'swaylock -f -c 000000'
 
+#bindsym $mod+Mod1+l exec sh ~/.local/bin/lock.sh&&sleep 6&&swaymsg "output * power off
 bindsym $mod+Mod1+l exec ~/.local/bin/lock.sh 
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
@@ -248,7 +249,8 @@ bindsym $mod+r mode "resize"
 #        urgent_workspace    #BF616A #BF616A #ECEFF4
 #	}
 #}
-exec_always --no-startup-id sh -c 'pkill -x waybar; sleep 1; exec waybar'
+exec_always --no-startup-id sh -c 'pkill -x waybar; sleep 1; exec waybar -c ~/.config/waybar/config-sway.jsonc -s ~/.config/waybar/style-sway.css'
+#exec_always --no-startup-id sh -c 'pkill -x waybar; sleep 1; exec waybar' 
 include /etc/sway/config.d/*
 
 exec fcitx5 -d
