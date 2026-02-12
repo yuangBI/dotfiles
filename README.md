@@ -1,4 +1,4 @@
-# bi's dotfiles
+# My dotfiles
 
 个人 Linux/Wayland 开发环境配置，主力是 **niri**，保留了部分 **sway** 配置。  
 目标：轻量、键盘驱动、开箱可用（shell / terminal / editor / wm / bar 一套）。
@@ -74,8 +74,6 @@ ln -sfn ~/dotfiles/.config/waybar ~/.config/waybar
 ln -sfn ~/dotfiles/.config/yazi ~/.config/yazi
 ln -sfn ~/dotfiles/.local/bin ~/.local/bin
 ```
-
-登录 TTY1 时，`home/.zshrc` 会自动拉起 `niri`（可按需改为 `sway`）。
 
 ## Key Behaviors
 
