@@ -115,8 +115,8 @@ alias type="type -a"
 bindkey -v
 
 if [[ -z "$WAYLAND_DISPLAY" && "$XDG_VTNR" -eq 1 ]]; then
-  #exec niri
-  exec sway
+  exec niri
+  #exec sway
 fi
 
 export IM_MODULE=fcitx
