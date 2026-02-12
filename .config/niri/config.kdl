@@ -268,7 +268,7 @@ layout {
 // See the binds section below for more spawn examples.
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
-//spawn-sh-at-startup "pkill -x waybar; sleep 1; exec waybar"
+spawn-sh-at-startup "pkill -x yambar; sleep 1; exec yambar"
 
 // Sway-compatible idle handling and screen lock.
 //spawn-sh-at-startup "swayidle -w \\
@@ -315,7 +315,7 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 // The wiki explains how to configure individual animations:
 // https://yalter.github.io/niri/Configuration:-Animations
 animations {
-    // Uncomment to turn off all animations.
+    // Turn off all animations.
     // off
 
     // Slow down all animations by this factor. Values below 1 speed them up instead.

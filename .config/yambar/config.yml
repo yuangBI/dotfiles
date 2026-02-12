@@ -1,0 +1,344 @@
+theme:
+  font-main: &font_main JetBrainsMono Nerd Font Mono:pixelsize=13
+  font-icon: &font_icon JetBrainsMono Nerd Font Mono:pixelsize=13
+
+  fg-main: &fg_main e3e6eeff
+  fg-dim: &fg_dim 1f2937ff
+
+  ws-idle-bg: &ws_idle_bg 3a3d54ff
+  ws-active-bg: &ws_active_bg a7b5c8ff
+  ws-urgent-bg: &ws_urgent_bg d20f39ff
+
+  card-bg: &card_bg 3a3d54ff
+  card-warn-bg: &card_warn_bg df8e1dff
+  card-hot-bg: &card_hot_bg d20f39ff
+
+bar:
+  location: bottom
+  height: 18
+  background: 00000000
+  foreground: *fg_main
+  font: *font_main
+  left-margin: 11
+  right-margin: 13
+  left-spacing: 8
+  right-spacing: 8
+
+  border:
+    left-margin: 11
+    right-margin: 11
+    bottom-margin: 4
+    width: 0
+
+  left:
+    - script:
+        path: ~/.config/yambar/niri-workspaces.sh
+        poll-interval: 600
+        content:
+          list:
+            spacing: 3
+            items:
+              - map:
+                  conditions:
+                    ws1_exists:
+                      map:
+                        default:
+                          list:
+                            spacing: 0
+                            items:
+                              - string: {text: "", font: *font_icon, foreground: *ws_idle_bg}
+                              - string: {text: "1", foreground: *fg_main, deco: {background: {color: *ws_idle_bg}}, on-click: {left: niri msg action focus-workspace 1}}
+                              - string: {text: "", font: *font_icon, foreground: *ws_idle_bg}
+                        conditions:
+                          ws1_urgent:
+                            list:
+                              spacing: 0
+                              items:
+                                - string: {text: "", font: *font_icon, foreground: *ws_urgent_bg}
+                                - string: {text: "1", foreground: ffffffff, deco: {background: {color: *ws_urgent_bg}}, on-click: {left: niri msg action focus-workspace 1}}
+                                - string: {text: "", font: *font_icon, foreground: *ws_urgent_bg}
+                          ws1_active:
+                            list:
+                              spacing: 0
+                              items:
+                                - string: {text: "", font: *font_icon, foreground: *ws_active_bg}
+                                - string: {text: " 1 ", foreground: *fg_dim, deco: {background: {color: *ws_active_bg}}, on-click: {left: niri msg action focus-workspace 1}}
+                                - string: {text: "", font: *font_icon, foreground: *ws_active_bg}
+
+              - map:
+                  conditions:
+                    ws2_exists:
+                      map:
+                        default:
+                          list:
+                            spacing: 0
+                            items:
+                              - string: {text: "", font: *font_icon, foreground: *ws_idle_bg}
+                              - string: {text: "2", foreground: *fg_main, deco: {background: {color: *ws_idle_bg}}, on-click: {left: niri msg action focus-workspace 2}}
+                              - string: {text: "", font: *font_icon, foreground: *ws_idle_bg}
+                        conditions:
+                          ws2_urgent:
+                            list:
+                              spacing: 0
+                              items:
+                                - string: {text: "", font: *font_icon, foreground: *ws_urgent_bg}
+                                - string: {text: "2", foreground: ffffffff, deco: {background: {color: *ws_urgent_bg}}, on-click: {left: niri msg action focus-workspace 2}}
+                                - string: {text: "", font: *font_icon, foreground: *ws_urgent_bg}
+                          ws2_active:
+                            list:
+                              spacing: 0
+                              items:
+                                - string: {text: "", font: *font_icon, foreground: *ws_active_bg}
+                                - string: {text: " 2 ", foreground: *fg_dim, deco: {background: {color: *ws_active_bg}}, on-click: {left: niri msg action focus-workspace 2}}
+                                - string: {text: "", font: *font_icon, foreground: *ws_active_bg}
+
+              - map:
+                  conditions:
+                    ws3_exists:
+                      map:
+                        default:
+                          list:
+                            spacing: 0
+                            items:
+                              - string: {text: "", font: *font_icon, foreground: *ws_idle_bg}
+                              - string: {text: "3", foreground: *fg_main, deco: {background: {color: *ws_idle_bg}}, on-click: {left: niri msg action focus-workspace 3}}
+                              - string: {text: "", font: *font_icon, foreground: *ws_idle_bg}
+                        conditions:
+                          ws3_urgent:
+                            list:
+                              spacing: 0
+                              items:
+                                - string: {text: "", font: *font_icon, foreground: *ws_urgent_bg}
+                                - string: {text: "3", foreground: ffffffff, deco: {background: {color: *ws_urgent_bg}}, on-click: {left: niri msg action focus-workspace 3}}
+                                - string: {text: "", font: *font_icon, foreground: *ws_urgent_bg}
+                          ws3_active:
+                            list:
+                              spacing: 0
+                              items:
+                                - string: {text: "", font: *font_icon, foreground: *ws_active_bg}
+                                - string: {text: " 3 ", foreground: *fg_dim, deco: {background: {color: *ws_active_bg}}, on-click: {left: niri msg action focus-workspace 3}}
+                                - string: {text: "", font: *font_icon, foreground: *ws_active_bg}
+
+              - map:
+                  conditions:
+                    ws4_exists:
+                      map:
+                        default:
+                          list:
+                            spacing: 0
+                            items:
+                              - string: {text: "", font: *font_icon, foreground: *ws_idle_bg}
+                              - string: {text: "4", foreground: *fg_main, deco: {background: {color: *ws_idle_bg}}, on-click: {left: niri msg action focus-workspace 4}}
+                              - string: {text: "", font: *font_icon, foreground: *ws_idle_bg}
+                        conditions:
+                          ws4_urgent:
+                            list:
+                              spacing: 0
+                              items:
+                                - string: {text: "", font: *font_icon, foreground: *ws_urgent_bg}
+                                - string: {text: "4", foreground: ffffffff, deco: {background: {color: *ws_urgent_bg}}, on-click: {left: niri msg action focus-workspace 4}}
+                                - string: {text: "", font: *font_icon, foreground: *ws_urgent_bg}
+                          ws4_active:
+                            list:
+                              spacing: 0
+                              items:
+                                - string: {text: "", font: *font_icon, foreground: *ws_active_bg}
+                                - string: {text: " 4 ", foreground: *fg_dim, deco: {background: {color: *ws_active_bg}}, on-click: {left: niri msg action focus-workspace 4}}
+                                - string: {text: "", font: *font_icon, foreground: *ws_active_bg}
+
+              - map:
+                  conditions:
+                    ws5_exists:
+                      map:
+                        default:
+                          list:
+                            spacing: 0
+                            items:
+                              - string: {text: "", font: *font_icon, foreground: *ws_idle_bg}
+                              - string: {text: "5", foreground: *fg_main, deco: {background: {color: *ws_idle_bg}}, on-click: {left: niri msg action focus-workspace 5}}
+                              - string: {text: "", font: *font_icon, foreground: *ws_idle_bg}
+                        conditions:
+                          ws5_urgent:
+                            list:
+                              spacing: 0
+                              items:
+                                - string: {text: "", font: *font_icon, foreground: *ws_urgent_bg}
+                                - string: {text: "5", foreground: ffffffff, deco: {background: {color: *ws_urgent_bg}}, on-click: {left: niri msg action focus-workspace 5}}
+                                - string: {text: "", font: *font_icon, foreground: *ws_urgent_bg}
+                          ws5_active:
+                            list:
+                              spacing: 0
+                              items:
+                                - string: {text: "", font: *font_icon, foreground: *ws_active_bg}
+                                - string: {text: " 5 ", foreground: *fg_dim, deco: {background: {color: *ws_active_bg}}, on-click: {left: niri msg action focus-workspace 5}}
+                                - string: {text: "", font: *font_icon, foreground: *ws_active_bg}
+
+              - map:
+                  conditions:
+                    ws6_exists:
+                      map:
+                        default:
+                          list:
+                            spacing: 0
+                            items:
+                              - string: {text: "", font: *font_icon, foreground: *ws_idle_bg}
+                              - string: {text: "6", foreground: *fg_main, deco: {background: {color: *ws_idle_bg}}, on-click: {left: niri msg action focus-workspace 6}}
+                              - string: {text: "", font: *font_icon, foreground: *ws_idle_bg}
+                        conditions:
+                          ws6_urgent:
+                            list:
+                              spacing: 0
+                              items:
+                                - string: {text: "", font: *font_icon, foreground: *ws_urgent_bg}
+                                - string: {text: "6", foreground: ffffffff, deco: {background: {color: *ws_urgent_bg}}, on-click: {left: niri msg action focus-workspace 6}}
+                                - string: {text: "", font: *font_icon, foreground: *ws_urgent_bg}
+                          ws6_active:
+                            list:
+                              spacing: 0
+                              items:
+                                - string: {text: "", font: *font_icon, foreground: *ws_active_bg}
+                                - string: {text: " 6 ", foreground: *fg_dim, deco: {background: {color: *ws_active_bg}}, on-click: {left: niri msg action focus-workspace 6}}
+                                - string: {text: "", font: *font_icon, foreground: *ws_active_bg}
+
+              - map:
+                  conditions:
+                    ws7_exists:
+                      map:
+                        default:
+                          list:
+                            spacing: 0
+                            items:
+                              - string: {text: "", font: *font_icon, foreground: *ws_idle_bg}
+                              - string: {text: "7", foreground: *fg_main, deco: {background: {color: *ws_idle_bg}}, on-click: {left: niri msg action focus-workspace 7}}
+                              - string: {text: "", font: *font_icon, foreground: *ws_idle_bg}
+                        conditions:
+                          ws7_urgent:
+                            list:
+                              spacing: 0
+                              items:
+                                - string: {text: "", font: *font_icon, foreground: *ws_urgent_bg}
+                                - string: {text: "7", foreground: ffffffff, deco: {background: {color: *ws_urgent_bg}}, on-click: {left: niri msg action focus-workspace 7}}
+                                - string: {text: "", font: *font_icon, foreground: *ws_urgent_bg}
+                          ws7_active:
+                            list:
+                              spacing: 0
+                              items:
+                                - string: {text: "", font: *font_icon, foreground: *ws_active_bg}
+                                - string: {text: " 7 ", foreground: *fg_dim, deco: {background: {color: *ws_active_bg}}, on-click: {left: niri msg action focus-workspace 7}}
+                                - string: {text: "", font: *font_icon, foreground: *ws_active_bg}
+
+              - map:
+                  conditions:
+                    ws8_exists:
+                      map:
+                        default:
+                          list:
+                            spacing: 0
+                            items:
+                              - string: {text: "", font: *font_icon, foreground: *ws_idle_bg}
+                              - string: {text: "8", foreground: *fg_main, deco: {background: {color: *ws_idle_bg}}, on-click: {left: niri msg action focus-workspace 8}}
+                              - string: {text: "", font: *font_icon, foreground: *ws_idle_bg}
+                        conditions:
+                          ws8_urgent:
+                            list:
+                              spacing: 0
+                              items:
+                                - string: {text: "", font: *font_icon, foreground: *ws_urgent_bg}
+                                - string: {text: "8", foreground: ffffffff, deco: {background: {color: *ws_urgent_bg}}, on-click: {left: niri msg action focus-workspace 8}}
+                                - string: {text: "", font: *font_icon, foreground: *ws_urgent_bg}
+                          ws8_active:
+                            list:
+                              spacing: 0
+                              items:
+                                - string: {text: "", font: *font_icon, foreground: *ws_active_bg}
+                                - string: {text: " 8 ", foreground: *fg_dim, deco: {background: {color: *ws_active_bg}}, on-click: {left: niri msg action focus-workspace 8}}
+                                - string: {text: "", font: *font_icon, foreground: *ws_active_bg}
+
+              - map:
+                  conditions:
+                    ws9_exists:
+                      map:
+                        default:
+                          list:
+                            spacing: 0
+                            items:
+                              - string: {text: "", font: *font_icon, foreground: *ws_idle_bg}
+                              - string: {text: "9", foreground: *fg_main, deco: {background: {color: *ws_idle_bg}}, on-click: {left: niri msg action focus-workspace 9}}
+                              - string: {text: "", font: *font_icon, foreground: *ws_idle_bg}
+                        conditions:
+                          ws9_urgent:
+                            list:
+                              spacing: 0
+                              items:
+                                - string: {text: "", font: *font_icon, foreground: *ws_urgent_bg}
+                                - string: {text: "9", foreground: ffffffff, deco: {background: {color: *ws_urgent_bg}}, on-click: {left: niri msg action focus-workspace 9}}
+                                - string: {text: "", font: *font_icon, foreground: *ws_urgent_bg}
+                          ws9_active:
+                            list:
+                              spacing: 0
+                              items:
+                                - string: {text: "", font: *font_icon, foreground: *ws_active_bg}
+                                - string: {text: " 9 ", foreground: *fg_dim, deco: {background: {color: *ws_active_bg}}, on-click: {left: niri msg action focus-workspace 9}}
+                                - string: {text: "", font: *font_icon, foreground: *ws_active_bg}
+
+  right:
+    - pulse:
+        content:
+          map:
+            conditions:
+              sink_muted:
+                list:
+                  spacing: 0
+                  items:
+                    - string: {text: "", font: *font_icon, foreground: *card_hot_bg}
+                    - string:
+                        text: " VOL MUTE "
+                        foreground: ffffffff
+                        deco: {background: {color: *card_hot_bg}}
+                        on-click: {left: wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle}
+                    - string: {text: "", font: *font_icon, foreground: *card_hot_bg}
+              ~sink_muted:
+                list:
+                  spacing: 0
+                  items:
+                    - string: {text: "", font: *font_icon, foreground: *card_bg}
+                    - string:
+                        text: " VOL {sink_percent}% "
+                        foreground: *fg_main
+                        deco: {background: {color: *card_bg}}
+                        on-click:
+                          left: wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+                          wheel-up: wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+ -l 1.5
+                          wheel-down: wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-
+                    - string: {text: "", font: *font_icon, foreground: *card_bg}
+
+    - script:
+        path: ~/.config/yambar/cpu-temp.sh
+        poll-interval: 1500
+        content:
+          map:
+            conditions:
+              hot:
+                list:
+                  spacing: 0
+                  items:
+                    - string: {text: "", font: *font_icon, foreground: *card_hot_bg}
+                    - string: {text: " CPU {temp}℃ ", foreground: ffffffff, deco: {background: {color: *card_hot_bg}}}
+                    - string: {text: "", font: *font_icon, foreground: *card_hot_bg}
+            default:
+              list:
+                spacing: 0
+                items:
+                  - string: {text: "", font: *font_icon, foreground: *card_bg}
+                  - string: {text: " CPU {temp}℃ ", foreground: *fg_main, deco: {background: {color: *card_bg}}}
+                  - string: {text: "", font: *font_icon, foreground: *card_bg}
+
+    - clock:
+        date-format: "%Y/%m/%d"
+        content:
+          list:
+            spacing: 0
+            items:
+              - string: {text: "", font: *font_icon, foreground: *card_bg}
+              - string: {text: " {date} {time} ", foreground: *fg_main, deco: {background: {color: *card_bg}}}
+              - string: {text: "", font: *font_icon, foreground: *card_bg}
