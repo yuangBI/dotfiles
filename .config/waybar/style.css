@@ -1,0 +1,222 @@
+@import "latte.css";
+
+* {
+  border: 0;
+  border-radius: 0;
+  min-height: 0;
+}
+
+window#waybar {
+  background: transparent;
+  color: #e3e6ee;
+  font-family: "JetBrains Sans", "JetBrainsSans", "Inter", "Noto Sans", sans-serif;
+  font-size: 11.6px;
+  font-weight: 500;
+  border-bottom: 0;
+  box-shadow: none;
+}
+
+#workspaces,
+#mode,
+#scratchpad,
+#custom-media,
+#window,
+#mpd,
+#pulseaudio,
+#network,
+#power-profiles-daemon,
+#cpu,
+#memory,
+#temperature,
+#backlight,
+#battery,
+#tray,
+#clock,
+#idle_inhibitor,
+#custom-power,
+#keyboard-state {
+  background: transparent;
+  color: #e3e6ee;
+  padding: 2px 6px;
+  margin: 0;
+  border-radius: 0;
+  border: 0;
+  box-shadow: none;
+}
+
+.modules-left,
+.modules-right,
+.modules-center {
+  background: rgba(58, 61, 84, 0.72);
+  border: 1px solid rgba(239, 241, 245, 0.18);
+  border-radius: 10px;
+  padding: 2px 4px;
+  margin: 1px 1px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 1px 6px rgba(0, 0, 0, 0.3);
+}
+
+.modules-center {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+}
+
+.modules-right {
+  border-left: 1px solid rgba(239, 241, 245, 0.18);
+}
+
+.modules-right > widget > * {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  margin: 0;
+  padding: 2px 10px;
+  border-radius: 0;
+}
+
+.modules-right > widget:not(:first-child) > * {
+  border-left: 1px solid rgba(239, 241, 245, 0.5);
+  box-shadow: inset 1px 0 0 rgba(0, 0, 0, 0.35), inset 2px 0 0 rgba(239, 241, 245, 0.18);
+  padding-left: 12px;
+}
+
+.modules-right > widget:first-child > * {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.modules-right > widget:last-child > * {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+modules-left > widget > #workspaces {
+  padding: 1px 2px;
+}
+
+#workspaces button {
+  color: #d7dbe6;
+  background: transparent;
+  padding: 1px 5px;
+  margin: 0 1px;
+  border-radius: 7px;
+  transition: background 120ms ease, color 120ms ease;
+}
+
+#workspaces button.focused {
+  color: #e3e6ee;
+  background: rgba(239, 241, 245, 0.24);
+  box-shadow: inset 0 0 0 1px rgba(239, 241, 245, 0.32);
+}
+
+#workspaces button.urgent {
+  color: #e3e6ee;
+  background: rgba(210, 15, 57, 0.3);
+  box-shadow: inset 0 0 0 1px rgba(210, 15, 57, 0.6);
+}
+
+#workspaces button:hover {
+  color: #e3e6ee;
+  background: rgba(239, 241, 245, 0.16);
+}
+
+#window {
+  background: rgba(76, 79, 105, 0.68);
+  color: #e3e6ee;
+  font-weight: 500;
+}
+
+#custom-media {
+  color: @sky;
+}
+
+#mpd {
+  color: @sky;
+}
+
+#pulseaudio {
+  color: #e3e6ee;
+}
+
+#pulseaudio.muted {
+  color: @overlay1;
+}
+
+#network {
+  color: #e3e6ee;
+}
+
+#network.disconnected {
+  color: @yellow;
+}
+
+#power-profiles-daemon {
+  color: @green;
+}
+
+#cpu {
+  color: #e3e6ee;
+}
+
+#memory {
+  color: #e3e6ee;
+}
+
+#temperature {
+  color: #e3e6ee;
+}
+
+#temperature.critical {
+  color: @red;
+}
+
+#battery {
+  color: #e3e6ee;
+}
+
+#battery.charging,
+#battery.plugged {
+  color: @green;
+}
+
+#battery.critical:not(.charging) {
+  color: @red;
+}
+
+#clock {
+  color: #e3e6ee;
+  letter-spacing: 0.2px;
+}
+
+#tray {
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#mode {
+  color: @sapphire;
+  font-style: italic;
+}
+
+#scratchpad {
+  color: @sapphire;
+}
+
+#idle_inhibitor {
+  color: #e3e6ee;
+}
+
+#keyboard-state {
+  color: #e3e6ee;
+}
+
+tooltip {
+  background: rgba(76, 79, 105, 0.8);
+  color: #e3e6ee;
+  border: 1px solid rgba(239, 241, 245, 0.2);
+  border-radius: 10px;
+  padding: 8px 10px;
+}
