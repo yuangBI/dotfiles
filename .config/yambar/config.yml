@@ -20,7 +20,7 @@ bar:
   foreground: *fg_main
   font: *font_main
   left-margin: 11
-  right-margin: 13
+  right-margin: 10
   left-spacing: 8
   right-spacing: 8
 

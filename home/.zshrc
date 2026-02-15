@@ -107,6 +107,7 @@ fi
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
+alias ll="ls -al"
 alias rm="rm -i"
 alias vim="nvim"
 alias type="type -a"

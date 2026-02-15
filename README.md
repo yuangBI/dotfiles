@@ -46,7 +46,7 @@
 建议先安装这些组件（按你自己发行版改包名）：
 
 - 基础：`zsh` `tmux` `neovim` `curl` `jq`
-- Wayland 桌面：`niri` `sway` `waybar` `foot` `wmenu` `swaybg` `swayidle` `swaylock` `grim` `yambar`
+- Wayland 桌面：`niri` `sway` `waybar` `foot` `wmenu` `swaybg` `swayidle` `swaylock` `grim`
 - 媒体/系统控制：`wireplumber`（wpctl） `playerctl` `brightnessctl`
 - 输入法：`fcitx5` + `fcitx5-chinese-addons`（中文输入法）
 - 文件管理：`yazi` `swayimg`
@@ -66,7 +66,6 @@ ln -sfn ~/dotfiles/home/.zshrc ~/.zshrc
 # 3) config / local bin
 ln -sfn ~/dotfiles/.config/foot ~/.config/foot
 ln -sfn ~/dotfiles/.config/niri ~/.config/niri
-ln -sfn ~/dotfiles/.local/yambar ~/.local/yambar
 ln -sfn ~/dotfiles/.config/nvim ~/.config/nvim
 ln -sfn ~/dotfiles/.config/p10k ~/.config/p10k
 ln -sfn ~/dotfiles/.config/sway ~/.config/sway

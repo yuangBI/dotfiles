@@ -22,8 +22,16 @@ end
 vim.cmd([[
   call plug#begin('~/.config/nvim/plugged')
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'imsnif/kdl.vim'
   call plug#end()
 ]])
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = "*.kdl",
+  callback = function()
+    vim.bo.filetype = "kdl"
+  end,
+})
 
 -- coc.nvim official example mappings / 官方示例按键
 vim.cmd([[
@@ -101,6 +109,7 @@ vim.opt.wildmenu = true
 
 -- Search behavior / 搜索行为
 vim.cmd("syntax on")
+vim.cmd("filetype plugin indent on")
 vim.cmd("nohlsearch")
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
