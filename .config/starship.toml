@@ -27,11 +27,12 @@ $scala\
 $docker_context\
 [](fg:#06969A bg:#33658A)\
 $time\
-[ ](fg:#33658A)\
+[](fg:#33658A)\
+$line_break\
+$character\
 """
 
-# Disable the blank line at the start of the prompt
-# add_newline = false
+add_newline = true
 
 # You can also replace your username with a neat symbol like   or disable this
 # and use the os module below
@@ -150,3 +151,8 @@ disabled = false
 time_format = "%R" # Hour:Minute Format
 style = "bg:#33658A"
 format = '[ ♥ $time ]($style)'
+
+[character]
+success_symbol = "[❯](bold green) "
+error_symbol = "[✗](bold red) "
+vimcmd_symbol = "[❮](bold yellow) "
