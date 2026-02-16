@@ -1,0 +1,7 @@
+#! /usr/bin/env bash
+foot -e zsh -lc '
+source /opt/miniconda/etc/profile.d/conda.sh
+conda activate sage
+echo "env: $CONDA_DEFAULT_ENV"
+exec sage
+'
