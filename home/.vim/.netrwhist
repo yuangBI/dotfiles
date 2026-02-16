@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =9
+let g:netrw_dirhist_9='/home/bi/.config/sway'
+let g:netrw_dirhist_8='/home/bi/Picture'
+let g:netrw_dirhist_7='/etc/sway/config.d'
+let g:netrw_dirhist_6='/home/bi/mcMod/src/client/java/com/yuangbi'
+let g:netrw_dirhist_5='/etc/fonts/conf.d'
+let g:netrw_dirhist_4='/etc/fonts'
+let g:netrw_dirhist_3='/home/bi/.vim'
+let g:netrw_dirhist_2='/home/bi/.pki/nssdb'
+let g:netrw_dirhist_1='/home/bi/.cache'

@@ -1,0 +1,43 @@
+let mapleader=" "
+map s <nop>
+map S :w<CR>
+map Q :q<CR>
+
+noremap J 5j
+noremap K 5k
+noremap H 8H
+noremap L 8L
+noremap n nzz
+noremap N Nzz
+noremap <LEADER>/ :nohlsearch<CR>
+
+noremap sk :set nosplitbelow<CR>:split<CR>
+noremap sj :set splitbelow<CR>:split<CR>
+noremap sh :set nosplitright<CR>:vsplit<CR>
+noremap sl :set splitright<CR>:vsplit<CR>
+
+map <up> :res +5<CR>
+map <down> :res -5<CR>
+map <left> :vertial resize -5<CR>
+map <right> :vertial resize +5<CR>
+
+ map <LEADER>l <C-w>l
+ map <LEADER>k <C-w>k
+ map <LEADER>j <C-w>j
+ map <LEADER>h <C-w>h
+
+ map <LEADER>L <C-w>t<C-w>L 
+ map <LEADER>K <C-w>t<C-w>K 
+ map <LEADER>J <C-w>t<C-w>J 
+ map <LEADER>H <C-w>t<C-w>H 
+set number
+set relativenumber
+set wildmenu
+
+syntax on
+
+exec "nohlsearch"
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
