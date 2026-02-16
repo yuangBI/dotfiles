@@ -254,6 +254,7 @@ exec_always --no-startup-id sh -c 'pkill -x waybar; sleep 1; exec waybar -c ~/.c
 include /etc/sway/config.d/*
 
 exec fcitx5 -d
+exec wayvnc 0.0.0.0
 seat seat0 hide_cursor 10000
 
 default_border pixel 3
