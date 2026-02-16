@@ -1,5 +1,9 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
+scan_timeout = 500
+command_timeout = 1200
+follow_symlinks = false
+
 format = """
 [](#9A348E)\
 $os\
@@ -29,6 +33,7 @@ $docker_context\
 $time\
 [](fg:#33658A)\
 $line_break\
+${env_var.STARSHIP_VI_MODE}\
 $character\
 """
 
@@ -151,6 +156,10 @@ disabled = false
 time_format = "%R" # Hour:Minute Format
 style = "bg:#33658A"
 format = '[ ♥ $time ]($style)'
+
+[env_var.STARSHIP_VI_MODE]
+default = "I"
+format = '[ $env_value ](bold #ebcb8b) '
 
 [character]
 success_symbol = "[❯](bold green) "

@@ -111,6 +111,35 @@ alias type="type -a"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 bindkey -v
 
+# ------------------------------
+# Starship vi-mode state bridge
+# ------------------------------
+# Keep a lightweight mode flag in STARSHIP_VI_MODE so Starship can
+# render current zle mode (I/N/V/R) via env_var module.
+autoload -Uz add-zle-hook-widget
+_update_starship_vi_mode() {
+  local mode="I"
+
+  if (( REGION_ACTIVE )); then
+    mode="V"
+  elif [[ "$KEYMAP" == "vicmd" ]]; then
+    mode="N"
+  elif [[ "$ZLE_STATE" == *overwrite* ]]; then
+    mode="R"
+  fi
+
+  export STARSHIP_VI_MODE="$mode"
+  if zle >/dev/null 2>&1; then
+    zle reset-prompt
+  fi
+}
+
+add-zle-hook-widget keymap-select _update_starship_vi_mode
+add-zle-hook-widget line-init _update_starship_vi_mode
+add-zle-hook-widget line-pre-redraw _update_starship_vi_mode
+_update_starship_vi_mode
+# ------------------------------
+
 if [[ -z "$WAYLAND_DISPLAY" && "$XDG_VTNR" -eq 1 ]]; then
   #exec niri
   exec sway
