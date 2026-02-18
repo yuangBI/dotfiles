@@ -5,10 +5,7 @@ command_timeout = 1200
 follow_symlinks = false
 
 format = """
-[](#9A348E)\
-$os\
-$username\
-[](bg:#DA627D fg:#9A348E)\
+$custom\
 $directory\
 [](fg:#DA627D bg:#FCA17D)\
 $git_branch\
@@ -33,7 +30,6 @@ $docker_context\
 $time\
 [](fg:#33658A)\
 $line_break\
-${env_var.STARSHIP_VI_MODE}\
 $character\
 """
 
@@ -157,9 +153,25 @@ time_format = "%R" # Hour:Minute Format
 style = "bg:#33658A"
 format = '[ ♥ $time ]($style)'
 
-[env_var.STARSHIP_VI_MODE]
-default = "I"
-format = '[ $env_value ](bold #ebcb8b) '
+[custom.vi_insert]
+command = "bash -lc '[ \"${STARSHIP_VI_MODE:-INSERT}\" = INSERT ] && printf INSERT'"
+when = true
+format = '([](fg:#9A348E)[ $output ](bg:#9A348E)[](fg:#9A348E bg:#DA627D))'
+
+[custom.vi_normal]
+command = "bash -lc '[ \"$STARSHIP_VI_MODE\" = NORMAL ] && printf NORMAL'"
+when = true
+format = '([](fg:#98c379)[ $output ](bg:#98c379 fg:#1f2335)[](fg:#98c379 bg:#DA627D))'
+
+[custom.vi_visual]
+command = "bash -lc '[ \"$STARSHIP_VI_MODE\" = VISUAL ] && printf VISUAL'"
+when = true
+format = '([](fg:#61afef)[ $output ](bg:#61afef fg:#1f2335)[](fg:#61afef bg:#DA627D))'
+
+[custom.vi_replace]
+command = "bash -lc '[ \"$STARSHIP_VI_MODE\" = REPLACE ] && printf REPLACE'"
+when = true
+format = '([](fg:#f9e2af)[ $output ](bg:#f9e2af fg:#1f2335)[](fg:#f9e2af bg:#DA627D))'
 
 [character]
 success_symbol = "[❯](bold green) "

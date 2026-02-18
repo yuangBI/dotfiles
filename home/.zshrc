@@ -114,18 +114,18 @@ bindkey -v
 # ------------------------------
 # Starship vi-mode state bridge
 # ------------------------------
-# Keep a lightweight mode flag in STARSHIP_VI_MODE so Starship can
+# Keep a lightweight mode flag so Starship can
 # render current zle mode (I/N/V/R) via env_var module.
 autoload -Uz add-zle-hook-widget
 _update_starship_vi_mode() {
-  local mode="I"
+  local mode="INSERT"
 
   if (( REGION_ACTIVE )); then
-    mode="V"
+    mode="VISUAL"
   elif [[ "$KEYMAP" == "vicmd" ]]; then
-    mode="N"
+    mode="NORMAL"
   elif [[ "$ZLE_STATE" == *overwrite* ]]; then
-    mode="R"
+    mode="REPLACE"
   fi
 
   export STARSHIP_VI_MODE="$mode"
