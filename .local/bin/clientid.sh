@@ -1,3 +1,0 @@
-#!/bin/bash
-
-UNSPLASH_CLIENT_ID="XH3HVusDV1wINvX7WEuLQkaDr8oGZcxj_BoupJfzhN0"
