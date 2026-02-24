@@ -1,8 +1,12 @@
-#!/bin/bash
-
-source "$(dirname "$0")/clientid.sh"
-
-mv -f ~/Pictures/new.jpg ~/Pictures/wallpaper.jpg
+#! /usr/bin/env bash
+if [[ -a "$(dirname "$0")/clientid.sh" ]]; then
+	source "$(dirname "$0")/clientid.sh"
+else
+	echo "clientid file not find"
+fi
+if [[ -a ~/Pictures/new.jpg ]]; then
+	mv -f ~/Pictures/new.jpg ~/Pictures/wallpaper.jpg
+fi
 pkill swaybg 2>/dev/null || true
 
 swaybg -i ~/Pictures/wallpaper.jpg -m fill & 
