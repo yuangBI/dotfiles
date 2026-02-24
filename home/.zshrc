@@ -1,36 +1,40 @@
+# history persistence
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=50000
+SAVEHIST=50000
+setopt APPEND_HISTORY
+setopt INC_APPEND_HISTORY
+setopt EXTENDED_HISTORY
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
 
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
+##
 if [[ -n $SSH_CONNECTION ]]; then
    export EDITOR='vim'
 else
 	export EDITOR='nvim'
 fi
 
-# Compilation flags
-# export ARCHFLAGS="-arch $(uname -m)"
+#autoload syntax-highlighting autosuggestions
+export ZSH_PLUGS=~/.local/share
+if [[ -d $ZSH_PLUGS/zsh-autosuggestions/.git ]]; then
+	source $ZSH_PLUGS/zsh-autosuggestions/zsh-autosuggestions.zsh
+else
+	git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_PLUGS/zsh-autosuggestions
+	source $ZSH_PLUGS/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
 
-# Set personal aliases, overriding those provided by Oh My Zsh libs,
-# plugins, and themes. Aliases can be placed here, though Oh My Zsh
-# users are encouraged to define aliases within a top-level file in
-# the $ZSH_CUSTOM folder, with .zsh extension. Examples:
-# - $ZSH_CUSTOM/aliases.zsh
-# - $ZSH_CUSTOM/macos.zsh
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
+if [[ -d $ZSH_PLUGS/zsh-syntax-highlighting/.git ]]; then
+	source $ZSH_PLUGS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+else
+	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_PLUGS/zsh-syntax-highlighting
+	source $ZSH_PLUGS/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
+#alias
 alias ll="ls -al"
 alias rm="rm -i"
 alias vim="nvim"
 alias type="type -a"
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 bindkey -v
 
 # ------------------------------
@@ -60,6 +64,7 @@ add-zle-hook-widget keymap-select _update_starship_vi_mode
 add-zle-hook-widget line-init _update_starship_vi_mode
 add-zle-hook-widget line-pre-redraw _update_starship_vi_mode
 _update_starship_vi_mode
+
 # ------------------------------
 
 if [[ -z "$WAYLAND_DISPLAY" && "$XDG_VTNR" -eq 1 ]]; then
