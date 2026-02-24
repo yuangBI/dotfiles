@@ -14,4 +14,4 @@ swaybg -i ~/Pictures/wallpaper.jpg -m fill &
 Json=$(curl -H "Authorization: Client-ID $UNSPLASH_CLIENT_ID" \
 	https://api.unsplash.com/photos/random?orientation=landscape)
 	IMG_URL=$(echo "$Json" | jq -r '.urls.raw')
-	curl -L "$IMG_URL" -o "/home/bi/Pictures/new.jpg"  
+	curl -L "$IMG_URL" -o "$HOME/Pictures/new.jpg"  
