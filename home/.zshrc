@@ -15,21 +15,27 @@ else
 	export EDITOR='nvim'
 fi
 
-#autoload syntax-highlighting autosuggestions
-export ZSH_PLUGS=~/.local/share
-if [[ -d $ZSH_PLUGS/zsh-autosuggestions/.git ]]; then
-	source $ZSH_PLUGS/zsh-autosuggestions/zsh-autosuggestions.zsh
-else
-	git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_PLUGS/zsh-autosuggestions
-	source $ZSH_PLUGS/zsh-autosuggestions/zsh-autosuggestions.zsh
-fi
+# load zinit
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[ ! -d "$ZINIT_HOME/.git" ] && mkdir -p "${ZINIT_HOME:h}" && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+source "${ZINIT_HOME}/zinit.zsh"
 
-if [[ -d $ZSH_PLUGS/zsh-syntax-highlighting/.git ]]; then
-	source $ZSH_PLUGS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-else
-	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_PLUGS/zsh-syntax-highlighting
-	source $ZSH_PLUGS/zsh-autosuggestions/zsh-autosuggestions.zsh
-fi
+autoload -Uz compinit
+compinit
+
+# nvm (lazy-load via OMZ nvm plugin)
+export NVM_DIR="$HOME/.nvm"
+export NVM_LAZY=1
+# export NVM_COMPLETION=true
+zinit ice wait"1" lucid
+zinit snippet OMZP::nvm
+# plugins (zinit installs automatically when missing)
+zinit snippet OMZP::command-not-found/command-not-found.plugin.zsh
+zinit snippet OMZP::colored-man-pages/colored-man-pages.plugin.zsh
+zinit snippet OMZP::git/git.plugin.zsh
+zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-syntax-highlighting
+
 #alias
 alias ll="ls -al"
 alias rm="rm -i"
@@ -113,10 +119,6 @@ function y() {
 }
 
 # opencode
-export PATH=/home/bi/.opencode/bin:$PATH
+export PATH=$HOME/.opencode/bin:$PATH
 
 eval "$(starship init zsh)"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
