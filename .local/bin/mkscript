@@ -1,0 +1,16 @@
+#! /usr/bin/env bash
+
+if [[ -z $1 ]] ; then
+	echo "need a script name"
+	exit 1
+fi
+if [[ -a $1 ]]; then
+	echo "that script name already exist"
+	exit 1
+fi
+
+touch "./$1" 2>&1
+
+echo '#! /usr/bin/env bash' > ./$1
+
+chmod +x ./$1 
