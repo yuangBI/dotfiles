@@ -11,6 +11,6 @@ fi
 
 touch "./$1" 2>&1
 
-echo '#! /usr/bin/env bash' > ./$1
+echo '#!/usr/bin/env bash' > ./$1
 
 chmod +x ./$1 
