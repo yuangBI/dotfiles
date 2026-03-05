@@ -280,7 +280,8 @@ spawn-sh-at-startup "pkill -x yambar; sleep 1; exec yambar"
 spawn-at-startup "fcitx5" "-d"
 
 // Wallpaper switcher
-spawn-sh-at-startup "~/.local/bin/chBackGround.sh"
+//spawn-sh-at-startup "~/.local/bin/chBackGround.sh"
+spawn-sh-at-startup "/usr/local/bin/awww-daemon &"
 spawn-sh-at-startup "wayvnc 0.0.0.0 &"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
