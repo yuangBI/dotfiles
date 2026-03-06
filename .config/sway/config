@@ -270,5 +270,7 @@ client.unfocused        #3a3f5c #0f111a #9aa4c7 #ffea00     #3a3f5c
 client.focused_inactive #4b4f73 #0f111a #aab4e0 #ffea00     #4b4f73
 client.urgent           #ff1744 #ff1744 #ffffff #ffea00     #ff1744
 
-exec_always $HOME/.local/bin/chBackGround.sh
+#exec_always $HOME/.local/bin/chBackGround.sh
+exec awww-daemon
 bindsym $mod+b exec $$HOME/.local/bin/chBackGround.sh
+bindsym $mod+Shift+b exec $$HOME/.local/bin/wallpaperGallery

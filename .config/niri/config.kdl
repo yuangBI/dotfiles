@@ -322,7 +322,7 @@ animations {
     // off
 
     // Slow down all animations by this factor. Values below 1 speed them up instead.
-    slowdown 0.7
+    slowdown 1.2
 }
 
 // Window rules let you adjust behavior for individual windows.
@@ -673,4 +673,5 @@ binds {
     Mod+Shift+P { power-off-monitors; }
 
     Mod+B { spawn-sh "~/.local/bin/chBackGround.sh"; }
+    Mod+Shift+B { spawn-sh "~/.local/bin/wallpaperGallery"; }
 }

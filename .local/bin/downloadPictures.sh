@@ -5,7 +5,7 @@ else
 	echo "clientid file not find"
 fi
 
-COUNT=30
+COUNT=24
 
 Json=$(curl -H "Authorization: Client-ID $UNSPLASH_CLIENT_ID" \
 	"https://api.unsplash.com/photos/random?orientation=landscape&count=$COUNT")

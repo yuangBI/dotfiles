@@ -1,0 +1,98 @@
+#!/usr/bin/env bash
+set -u
+
+PIC_DIR="${HOME}/Pictures"
+MODE_NAME="wallpaper-grid"
+COLS="${ROFI_WALL_COLS:-3}"
+LINES_MAX="${ROFI_WALL_LINES_MAX:-20}"
+ICON_SIZE="${ROFI_WALL_ICON_SIZE:-240}"
+WINDOW_WIDTH="${ROFI_WALL_WIDTH:-49%}"
+WINDOW_HEIGHT="${ROFI_WALL_HEIGHT:-96%}"
+
+image_stream() {
+  find "$PIC_DIR" -maxdepth 1 -type f -regextype posix-extended \
+    -iregex '.*/[0-9]+\.(jpg|jpeg|png|webp|bmp|gif)' \
+    -print0 | sort -zV
+}
+
+has_images() {
+  image_stream | { IFS= read -r -d '' _ && return 0 || return 1; }
+}
+
+set_wallpaper() {
+  local img="$1"
+  awww img "$img" \
+    --transition-type random \
+    --transition-duration 2 \
+    --transition-fps 60 >/dev/null 2>&1
+}
+
+print_grid() {
+  printf '\0no-custom\x1ftrue\n'
+  printf '\0keep-selection\x1ftrue\n'
+  printf '\0keep-filter\x1ftrue\n'
+
+  while IFS= read -r -d '' file; do
+    base="$(basename "$file")"
+    printf '%s\0icon\x1f%s\x1fdisplay\x1f \x1fmeta\x1f%s\x1finfo\x1f%s\n' "$base" "$file" "$base" "$file"
+  done < <(image_stream)
+}
+
+launch_rofi() {
+  if ! command -v rofi >/dev/null 2>&1; then
+    printf 'rofi not found in PATH\n' >&2
+    exit 1
+  fi
+
+  if ! command -v awww >/dev/null 2>&1; then
+    rofi -e "awww command not found"
+    exit 1
+  fi
+
+  if ! has_images; then
+    rofi -e "No images found in $PIC_DIR"
+    exit 1
+  fi
+
+  exec rofi \
+    -show "$MODE_NAME" \
+    -modes "$MODE_NAME:$0" \
+    -scroll-method 0 \
+    -kb-row-up "k" \
+    -kb-row-down "j" \
+    -kb-row-left "h" \
+    -kb-row-right "l" \
+    -show-icons \
+    -theme-str "* { background-color: transparent; }" \
+    -theme-str "window { width: ${WINDOW_WIDTH}; height: ${WINDOW_HEIGHT}; transparency: \"real\"; background-color: rgba (12, 18, 26, 72%); border: 1px; border-color: rgba (120, 166, 201, 45%); border-radius: 14px; padding: 8px; }" \
+    -theme-str "mainbox { children: [ listview ]; background-color: transparent; spacing: 0px; }" \
+    -theme-str "inputbar { enabled: false; }" \
+    -theme-str "message { enabled: false; }" \
+    -theme-str "listview { background-color: transparent; layout: vertical; flow: horizontal; scrollbar: true; columns: ${COLS}; lines: ${LINES_MAX}; fixed-columns: true; fixed-height: false; cycle: false; spacing: 0px; padding: 0px; }" \
+    -theme-str "element { orientation: vertical; children: [ element-icon ]; padding: 0px; margin: 0px; border: 1px; border-radius: 12px; border-color: transparent; background-color: transparent; }" \
+    -theme-str "element normal.normal, element normal.urgent, element normal.active, element alternate.normal, element alternate.urgent, element alternate.active { background-color: transparent; border-color: transparent; }" \
+    -theme-str "element selected.normal, element selected.urgent, element selected.active { background-color: rgba (66, 153, 225, 18%); border-color: rgba (132, 215, 255, 95%); }" \
+    -theme-str "element-icon { size: ${ICON_SIZE}px; background-color: transparent; border: 0px; }" \
+    -theme-str "element-text { enabled: false; }" \
+    -theme-str "scrollbar { background-color: transparent; handle-color: rgba (132, 215, 255, 40%); border-color: transparent; }"
+}
+
+if [[ -z "${ROFI_RETV+x}" ]]; then
+  launch_rofi
+fi
+
+case "${ROFI_RETV}" in
+  0)
+    print_grid
+    ;;
+  1)
+    selected="${ROFI_INFO:-${1-}}"
+    if [[ -n "$selected" && -f "$selected" ]]; then
+      set_wallpaper "$selected" || true
+    fi
+    print_grid
+    ;;
+  *)
+    exit 0
+    ;;
+esac
