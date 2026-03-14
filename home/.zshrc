@@ -118,6 +118,10 @@ function y() {
 	rm -f -- "$tmp"
 }
 
+if [[ $(uname -n) == "raspberrypi" ]]; then
+	export PATH="$PATH:/opt/nvim-linux-arm64/bin"   
+fi
+
 # opencode
 export PATH=$HOME/.opencode/bin:$PATH
 
