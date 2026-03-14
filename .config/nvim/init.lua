@@ -23,15 +23,52 @@ vim.cmd([[
   call plug#begin('~/.config/nvim/plugged')
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'imsnif/kdl.vim'
+  " Tree-sitter plugin (new API branch) / Tree-sitter 插件（新 API）
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   call plug#end()
 ]])
 
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-  pattern = "*.kdl",
-  callback = function()
-    vim.bo.filetype = "kdl"
-  end,
-})
+
+-- Tree-sitter 最小可运行配置（按 nvim-treesitter 官方 README 新 API）
+local ok_ts, ts = pcall(require, "nvim-treesitter")
+if ok_ts then
+  local ts_languages = {
+    "bash",
+    "c",
+    "cpp",
+    "json",
+    "lua",
+    "markdown",
+    "markdown_inline",
+    "python",
+    "query",
+    "toml",
+    "vim",
+    "vimdoc",
+    "yaml",
+  }
+
+  ts.setup({
+    install_dir = vim.fn.stdpath("data") .. "/site",
+  })
+
+  vim.api.nvim_create_autocmd("VimEnter", {
+    once = true,
+    callback = function()
+      if vim.fn.executable("tree-sitter") == 1 then
+        ts.install(ts_languages)
+      else
+        vim.notify("nvim-treesitter: 未检测到 tree-sitter CLI，无法自动安装 parser", vim.log.levels.WARN)
+      end
+    end,
+  })
+
+  vim.api.nvim_create_autocmd("FileType", {
+    callback = function(args)
+      pcall(vim.treesitter.start, args.buf)
+    end,
+  })
+end
 
 -- coc.nvim official example mappings / 官方示例按键
 vim.cmd([[
@@ -73,8 +110,8 @@ vim.keymap.set("", "s", "<nop>")
 vim.keymap.set("n", "S", ":w<CR>")
 vim.keymap.set("n", "Q", ":q<CR>")
 
-vim.keymap.set("n", "J", "5j")
-vim.keymap.set("n", "K", "5k")
+--vim.keymap.set("n", "J", "5j")
+--vim.keymap.set("n", "K", "5k")
 vim.keymap.set("n", "H", "8H")
 vim.keymap.set("n", "L", "8L")
 vim.keymap.set("n", "n", "nzz")
