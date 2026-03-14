@@ -117,8 +117,8 @@ function y() {
 	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
 	rm -f -- "$tmp"
 }
-
-if [[ $(uname -n) == "raspberrypi" ]]; then
+# if is raspberry OS
+if [[ $(uname -n) = "raspberrypi" ]]; then
 	export PATH="$PATH:/opt/nvim-linux-arm64/bin"   
 fi
 

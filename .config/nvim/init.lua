@@ -29,7 +29,7 @@ vim.cmd([[
 ]])
 
 
--- Tree-sitter 最小可运行配置（按 nvim-treesitter 官方 README 新 API）
+-- Tree-sitter------------------------------------------- 
 local ok_ts, ts = pcall(require, "nvim-treesitter")
 if ok_ts then
   local ts_languages = {
@@ -45,6 +45,7 @@ if ok_ts then
     "toml",
     "vim",
     "vimdoc",
+    "java",
     "yaml",
   }
 

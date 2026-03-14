@@ -57,7 +57,7 @@
 按发行版自行替换包名，建议至少安装：
 
 - 基础：`git` `zsh` `tmux` `curl` `jq`
-- Wayland 桌面：`niri` `sway` `foot` `wmenu` `swaybg` `swayidle` `swaylock` `grim`
+- Wayland 桌面：`niri` `sway` `foot` `wmenu` `swayidle` `swaylock` `grim`
 - 状态栏：`yambar`（niri）`waybar`（sway）
 - 音频/亮度/媒体：`wireplumber`(提供 `wpctl`) `playerctl` `brightnessctl`
 - 输入法：`fcitx5` `fcitx5-chinese-addons`
