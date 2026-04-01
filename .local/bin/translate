@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-
+argument="${*:--v en:zh}"
 translate() {
   clear
-  trans en:zh $1
+  trans $argument $1
 }
-
-while read -r word; do
+clear
+while read -r -p "translate>" word; do
   translate "$word"
 done
