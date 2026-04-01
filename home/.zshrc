@@ -35,6 +35,7 @@ zinit snippet OMZP::colored-man-pages/colored-man-pages.plugin.zsh
 zinit snippet OMZP::git/git.plugin.zsh
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-syntax-highlighting
+zinit light kutsan/zsh-system-clipboard
 
 #alias
 alias ll="ls -al"
