@@ -100,7 +100,7 @@ vim.cmd([[
   nmap <silent> ]d <Plug>(coc-diagnostic-next)
   nmap <leader>a <Plug>(coc-codeaction)
   xmap <leader>a <Plug>(coc-codeaction-selected)
-  nnoremap <silent> <leader>h :call CocAction('doHover')<CR>
+  nnoremap <silent> gh :call CocAction('doHover')<CR>
   nnoremap <silent> <leader>f :CocCommand editor.action.formatDocument<CR>
   nnoremap <silent> <leader>s :CocList symbols<CR>
   nmap <silent> <leader>r <Plug>(coc-rename)
@@ -113,8 +113,8 @@ vim.keymap.set("n", "Q", ":q<CR>")
 
 --vim.keymap.set("n", "J", "5j")
 --vim.keymap.set("n", "K", "5k")
-vim.keymap.set("n", "H", "8H")
-vim.keymap.set("n", "L", "8L")
+--vim.keymap.set("n", "H", "8H")
+--vim.keymap.set("n", "L", "8L")
 vim.keymap.set("n", "n", "nzz")
 vim.keymap.set("n", "N", "Nzz")
 vim.keymap.set("n", "<LEADER>/", ":nohlsearch<CR>")
@@ -140,6 +140,9 @@ vim.keymap.set("n", "<LEADER>K", "<C-w>t<C-w>K")
 vim.keymap.set("n", "<LEADER>J", "<C-w>t<C-w>J")
 vim.keymap.set("n", "<LEADER>H", "<C-w>t<C-w>H")
 
+
+vim.keymap.set("n", "L", "gt")
+vim.keymap.set("n", "H", "gT")
 -- Editor options / 编辑器选项
 vim.opt.number = true
 vim.opt.relativenumber = true

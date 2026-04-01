@@ -2,6 +2,13 @@
   "suggest.noselect": true,
   "suggest.enablePreselect": false,
   "diagnostic.virtualText": false,
+  "sh.enable": true,
   "bashIde.enableShellcheck": true,
-  "bashIde.shellcheckPath": "shellcheck"
+  "bashIde.shellcheckPath": "shellcheck",
+  "bashIde.shfmt.path": "shfmt",
+  "coc.preferences.formatOnSaveFiletypes": [
+    "sh",
+    "bash",
+    "zsh"
+  ]
 }
