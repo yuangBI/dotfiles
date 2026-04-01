@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+translate() {
+  clear
+  trans en:zh $1
+}
+
+while read -r word; do
+  translate "$word"
+done
