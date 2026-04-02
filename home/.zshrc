@@ -42,7 +42,6 @@ alias ll="ls -al"
 alias rm="rm -i"
 alias vim="nvim"
 alias type="type -a"
-bindkey -v
 
 # ------------------------------
 # Starship vi-mode state bridge
@@ -128,3 +127,8 @@ fi
 export PATH=$HOME/.opencode/bin:$PATH
 
 eval "$(starship init zsh)"
+
+# Keep vi-mode key bindings after all plugins/scripts.
+	bindkey -v
+	bindkey -M viins '^?' backward-delete-char
+	bindkey -M viins '^H' backward-delete-char
