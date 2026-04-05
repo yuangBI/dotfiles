@@ -21,7 +21,8 @@ ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 source "${ZINIT_HOME}/zinit.zsh"
 
 autoload -Uz compinit
-compinit
+mkdir -p "${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
+compinit -C -d "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump-${ZSH_VERSION}"
 
 # nvm (lazy-load via OMZ nvm plugin)
 export NVM_DIR="$HOME/.nvm"
@@ -38,12 +39,6 @@ zinit light zsh-users/zsh-syntax-highlighting
 
 #### zsh-vi-mode (ZVM) config START ####
 
-# zsh-vi-mode setup:
-# - initialize at source time (so widgets/keymaps exist immediately)
-# - disable lazy keybindings (so our custom remaps always apply)
-ZVM_INIT_MODE=sourcing
-ZVM_LAZY_KEYBINDINGS=false
-
 # Enable system clipboard integration for zsh-vi-mode.
 # Keep these as explicit Wayland commands.
 ZVM_SYSTEM_CLIPBOARD_ENABLED=true
@@ -57,12 +52,7 @@ _zvm_remap_p_to_clipboard() {
 	zvm_bindkey vicmd 'P' zvm_paste_clipboard_before
 }
 
-# Run after zsh-vi-mode init.
-zvm_after_init() {
-	_zvm_remap_p_to_clipboard
-}
-
-# Also run after lazy-keybinding phase (safe even when lazy is disabled).
+# Run after zsh-vi-mode lazy-keybinding phase.
 zvm_after_lazy_keybindings() {
 	_zvm_remap_p_to_clipboard
 }
