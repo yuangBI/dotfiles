@@ -5,8 +5,10 @@ command_timeout = 1200
 follow_symlinks = false
 
 format = """
-$custom\
+[](fg:#9A348E)\
 $directory\
+[](fg:#9A348E bg:#DA627D)\
+$status\
 [](fg:#DA627D bg:#FCA17D)\
 $git_branch\
 $git_status\
@@ -51,7 +53,7 @@ style = "bg:#9A348E"
 disabled = true # Disabled by default
 
 [directory]
-style = "bg:#DA627D"
+style = "bg:#9A348E"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
@@ -68,6 +70,13 @@ truncation_symbol = "…/"
 # will not be replaced, because "Documents" was already substituted before.
 # So either put "Important Documents" before "Documents" or use the substituted version:
 # "Important 󰈙 " = " 󰈙 "
+
+[status]
+disabled = false
+symbol = ""
+success_symbol = ""
+style = "bg:#DA627D"
+format = '[ $status ]($style)'
 
 [c]
 symbol = " "
@@ -153,26 +162,6 @@ disabled = false
 time_format = "%R" # Hour:Minute Format
 style = "bg:#33658A"
 format = '[ ♥ $time ]($style)'
-
-[custom.vi_insert]
-command = "bash -lc '[ \"${STARSHIP_VI_MODE:-INSERT}\" = INSERT ] && printf INSERT'"
-when = true
-format = '([](fg:#9A348E)[ $output ](bg:#9A348E)[](fg:#9A348E bg:#DA627D))'
-
-[custom.vi_normal]
-command = "bash -lc '[ \"$STARSHIP_VI_MODE\" = NORMAL ] && printf NORMAL'"
-when = true
-format = '([](fg:#98c379)[ $output ](bg:#98c379 fg:#1f2335)[](fg:#98c379 bg:#DA627D))'
-
-[custom.vi_visual]
-command = "bash -lc '[ \"$STARSHIP_VI_MODE\" = VISUAL ] && printf VISUAL'"
-when = true
-format = '([](fg:#61afef)[ $output ](bg:#61afef fg:#1f2335)[](fg:#61afef bg:#DA627D))'
-
-[custom.vi_replace]
-command = "bash -lc '[ \"$STARSHIP_VI_MODE\" = REPLACE ] && printf REPLACE'"
-when = true
-format = '([](fg:#f9e2af)[ $output ](bg:#f9e2af fg:#1f2335)[](fg:#f9e2af bg:#DA627D))'
 
 [character]
 success_symbol = "[❯](bold green) "
