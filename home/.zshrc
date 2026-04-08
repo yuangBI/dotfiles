@@ -96,6 +96,7 @@ zvm_change_surround_text_object() {
 
 
 #alias
+alias ls="ls --color=auto"
 alias ll="ls -al"
 alias rm="rm -i"
 alias vim="nvim"
