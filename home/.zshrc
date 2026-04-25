@@ -107,17 +107,16 @@ if [[ -z "$WAYLAND_DISPLAY" && "$XDG_VTNR" -eq 1 ]]; then
 	#exec sway
 fi
 
-export IM_MODULE=fcitx
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export XMODIFIERS=@im=fcitx
-export SDL_IM_MODULE=fcitx
-export GLFW_IM_MODULE=ibus
-export CLUTTER_IM_MODULE=fcitx
+#export IM_MODULE=fcitx
+#export GTK_IM_MODULE=fcitx
+#export QT_IM_MODULE=fcitx
+#export XMODIFIERS=@im=fcitx
+#export SDL_IM_MODULE=fcitx
+#export GLFW_IM_MODULE=ibus
+#export CLUTTER_IM_MODULE=fcitx
 
+path=($HOME/.local/bin $path)
 typeset -U path
-
-source <(fzf --zsh)
 
 # Lazy-load conda to speed up shell startup.
 export CONDA_EXE="/opt/miniconda/bin/conda"
@@ -160,3 +159,5 @@ eval "$(starship init zsh)"
 # Keep vi-mode key bindings after all plugins/scripts.
 	bindkey -M viins '^?' backward-delete-char
 	bindkey -M viins '^H' backward-delete-char
+
+source <(fzf --zsh)
