@@ -1,3 +1,4 @@
+
 # history persistence
 HISTFILE="$HOME/.zsh_history"
 HISTSIZE=50000
@@ -58,6 +59,8 @@ zvm_after_lazy_keybindings() {
 }
 
 zinit light jeffreytse/zsh-vi-mode
+zinit ice wait"2" lucid atload'source <(fzf --zsh)'
+zinit snippet OMZP::git
 
 # Fix plugin gap: di( / di' (surround text-object path) updated CUTBUFFER
 # but did not sync to system clipboard. Override and add clipboard sync.
@@ -159,5 +162,3 @@ eval "$(starship init zsh)"
 # Keep vi-mode key bindings after all plugins/scripts.
 	bindkey -M viins '^?' backward-delete-char
 	bindkey -M viins '^H' backward-delete-char
-
-source <(fzf --zsh)
