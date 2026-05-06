@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+check_video() {
+  if ffmpeg -v error -i "$1" -f null - 2>&1 | grep -q .; then
+    echo "ERROR: $1" >>error.txt
+  fi
+}
+shopt -s globstar
+for file in **/*; do
+  echo $file
+  check_video "$file"
+done
