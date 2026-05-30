@@ -46,6 +46,13 @@ ZVM_CLIPBOARD_PASTE_CMD='wl-paste -n'
 zinit light jeffreytse/zsh-vi-mode
 zinit light zsh-users/zsh-syntax-highlighting
 
+#zsh-nvm 
+export NVM_DIR="$HOME/.nvm"
+export NVM_LAZY_LOAD=true
+export NVM_COMPLETION=true                                     # 可选：补全
+
+zinit ice wait lucid
+zinit light lukechilds/zsh-nvm
 
 # Useful aliases
 alias ls="ls --color=auto"
