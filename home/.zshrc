@@ -51,7 +51,8 @@ export NVM_DIR="$HOME/.nvm"
 export NVM_LAZY_LOAD=true
 export NVM_COMPLETION=true                                     # 可选：补全
 
-zinit ice wait lucid
+export NVM_LAZY_LOAD_EXTRA_COMMANDS=(joplin npx nvim vim)
+#zinit ice wait lucid
 zinit light lukechilds/zsh-nvm
 
 # Useful aliases
