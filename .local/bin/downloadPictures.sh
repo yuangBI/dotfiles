@@ -3,7 +3,10 @@ if [[ -e "$(dirname "$0")/clientid.sh" ]]; then
   source "$(dirname "$0")/clientid.sh"
 else
   echo "clientid file not find"
+  exit 1
 fi
+
+rm -f ~/.cache/DankMaterialShell/imagecache/*
 
 COUNT=30
 
